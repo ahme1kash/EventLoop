@@ -1,0 +1,47 @@
+<!-- <!DOCTYPE html> -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">Click Me</button>
+    <!-- <button id="btn2">Click Me</button> -->
+
+    <script>
+        function scheduleWork() {
+            // Promise.resolve().then(() => Promise.resolve(() => console.log('m6')))
+            Promise.resolve().then(() => console.log('m1'))
+            Promise.resolve().then(() => console.log('m2'))
+            setTimeout(() => console.log('t1'), 0)
+            setTimeout(() => {
+                Promise.resolve().then(() => console.log('m3'))
+                Promise.resolve().then(() => console.log('m4'))
+                Promise.resolve().then(() => console.log('m5'))
+            }, 0)
+            setTimeout(() => console.log('t2'), 0)
+            setTimeout(() => console.log('t3'), 0)
+        }
+        function scheduleWorkAgain() {
+            // Promise.resolve().then(() => Promise.resolve(() => console.log('m6')))
+            Promise.resolve().then(() => console.log('2 - m1'))
+            Promise.resolve().then(() => console.log('2 - m2'))
+            setTimeout(() => console.log('2  - t1'), 0)
+            setTimeout(() => {
+                Promise.resolve().then(() => console.log('2 - m3'))
+                Promise.resolve().then(() => console.log('2 - m4'))
+                Promise.resolve().then(() => console.log('2 - m5'))
+            }, 0)
+            setTimeout(() => console.log('2 - t2'), 0)
+            setTimeout(() => console.log('2 - t3'), 0)
+        }
+        const btn = document.getElementById('btn')
+        btn.addEventListener('click', () => { scheduleWork(), scheduleWorkAgain() })
+
+    </script>
+</body>
+
+</html>
